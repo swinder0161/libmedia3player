@@ -91,7 +91,7 @@ public class Media3Player {
         mPrefSubs = prefSubs;
         mPlayer = new ExoPlayer.Builder(mContext).build();
         mPlayer.addListener(new Media3PlayerListener(this));
-        mPlayer.setPlayWhenReady(true);
+        setPlayWhenReady(true);
         mView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
         mView.setPlayer(mPlayer);
         MediaSource mediaSource = getMediaSource(contentType);
@@ -205,6 +205,7 @@ public class Media3Player {
     }
 
     public void setPlayWhenReady(boolean b) {
+        mView.setKeepScreenOn(b);
         mPlayer.setPlayWhenReady(b);
     }
 
